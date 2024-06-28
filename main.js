@@ -14,6 +14,9 @@ createApp({
             '30% wool',
             '20% polyester'
         ])
+        const sizes = ref([
+            'S', 'M', 'L'
+        ])
         const variants = ref([
             { id: 2234, color: 'green'},
             { id: 2235, color: 'blue'}
@@ -27,6 +30,7 @@ createApp({
             inventory,
             onSale,
             details,
+            sizes,
             variants
         }
     }
