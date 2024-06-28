@@ -23,17 +23,6 @@ createApp({
         const cart = ref(0)
 
 
-        const image = computed(() => {
-            return variants.value[selectedVariant.value].image
-        })
-        const inStock = computed(() => {
-            return variants.value[selectedVariant.value].quantity
-        })
-        const onSale = computed(() => {
-            return variants.value[selectedVariant.value].onSale
-        })
-
-
         function addToCart() {
             cart.value += 1
         }
@@ -50,6 +39,15 @@ createApp({
 
         const title = computed(() => {
             return brand.value + ' ' + product.value
+        })
+        const image = computed(() => {
+            return variants.value[selectedVariant.value].image
+        })
+        const inStock = computed(() => {
+            return variants.value[selectedVariant.value].quantity
+        })
+        const onSale = computed(() => {
+            return variants.value[selectedVariant.value].onSale
         })
         return {
             title,
