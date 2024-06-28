@@ -7,7 +7,6 @@ createApp({
         const image = ref('./assets/images/socks_green.jpg')
         const link = ref('https://www.camt.cmu.ac.th/')
         const inStock = ref(true)
-        const stockToggle = ref(true)
         const onSale = ref(true)
         const inventory = ref(5)
         const details = ref([
@@ -39,7 +38,6 @@ createApp({
             image,
             link,
             inStock,
-            stockToggle,
             inventory,
             onSale,
             details,
