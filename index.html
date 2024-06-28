@@ -35,7 +35,10 @@
             <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">
                 {{variant.color}}
             </div>
+            <p v-if="inStock">In Stock</p>
+            <p v-else>Out of Stock</p>
             <button class="button" @click="addToCart">Add To Cart</button>
+            <button class="button" @click="toggleStock">Toggle Stock</button>
         </div>
     </div>
         
