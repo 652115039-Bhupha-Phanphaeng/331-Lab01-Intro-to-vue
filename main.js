@@ -21,6 +21,7 @@ createApp({
             { id: 2234, color: 'green'},
             { id: 2235, color: 'blue'}
         ])
+        const cart = ref(0)
         return {
             product,
             description,
@@ -31,7 +32,8 @@ createApp({
             onSale,
             details,
             sizes,
-            variants
+            variants,
+            cart
         }
     }
 }).mount('#app')
