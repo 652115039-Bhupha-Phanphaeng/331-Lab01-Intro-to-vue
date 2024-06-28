@@ -32,7 +32,7 @@
                 <li v-for="detail in details">{{detail}}</li>
             </ul>
             <span v-for="size in sizes">{{size+" "}}</span>
-            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)" class="color-circle" :style="{backgroundColor: variant.color}">
+            <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle" :style="{backgroundColor: variant.color}">
                 {{variant.color}}
             </div>
             <p v-if="inStock">In Stock</p>
