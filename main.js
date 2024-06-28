@@ -5,10 +5,7 @@ createApp({
         const product = ref('Boots')
         const brand = ref('SE 331')
         const description = ref('Warm and cozy boots')
-
         const link = ref('https://www.camt.cmu.ac.th/')
-
-        const onSale = ref(true)
         const inventory = ref(100)
         const details = ref([
             '50% cotton',
@@ -19,8 +16,8 @@ createApp({
             'S', 'M', 'L'
         ])
         const variants = ref([
-            { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50},
-            { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0}
+            { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50, onSale: true},
+            { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0, onSale: false},
         ])
         const selectedVariant = ref(0)
         const cart = ref(0)
@@ -31,6 +28,9 @@ createApp({
         })
         const inStock = computed(() => {
             return variants.value[selectedVariant.value].quantity
+        })
+        const onSale = computed(() => {
+            return variants.value[selectedVariant.value].onSale
         })
 
 
