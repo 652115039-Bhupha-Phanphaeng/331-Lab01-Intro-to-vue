@@ -31,7 +31,10 @@ const productDisplay = {
         </div>
     </div>
     `,
-    setup() {
+    props:{
+        premium: Boolean
+    },
+    setup(props) {
         const product = ref('Boots')
         const brand = ref('SE 331')
         const description = ref('Warm and cozy boots')
@@ -94,7 +97,8 @@ const productDisplay = {
             addToCart,
             updateImage,
             toggleStock,
-            updateVariant
+            updateVariant,
+            shipping
         }
     }
 }
