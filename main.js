@@ -5,9 +5,9 @@ createApp({
         const product = ref('Boots')
         const brand = ref('SE 331')
         const description = ref('Warm and cozy boots')
-        const image = ref('./assets/images/socks_green.jpg')
+
         const link = ref('https://www.camt.cmu.ac.th/')
-        const inStock = ref(true)
+
         const onSale = ref(true)
         const inventory = ref(100)
         const details = ref([
@@ -24,6 +24,8 @@ createApp({
         ])
         const selectedVariant = ref(0)
         const cart = ref(0)
+
+
         const image = computed(() => {
             return variants.value[selectedVariant.value].image
         })
@@ -63,7 +65,8 @@ createApp({
             cart,
             addToCart,
             updateImage,
-            toggleStock
+            toggleStock,
+            updateVariant
         }
     }
 }).mount('#app')
