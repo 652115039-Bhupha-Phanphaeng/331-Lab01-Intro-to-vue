@@ -26,6 +26,7 @@ const productDisplay = {
             </div>
             <p v-if="inStock">In Stock</p>
             <p v-else>Out of Stock</p>
+            <p>Shipping: {{shipping}}</p>
             <button class="button" :disabled="!inStock" @click="addToCart" :class="{disabledButton: !inStock}">Add To Cart</button>
             <button class="button" @click="toggleStock">Toggle Stock</button>
         </div>
@@ -35,6 +36,14 @@ const productDisplay = {
         premium: Boolean
     },
     setup(props) {
+        const shipping = computed(() => {
+            if (props.premium) {
+                return 'Free'
+            }else{
+                return 30
+            }
+        })
+        
         const product = ref('Boots')
         const brand = ref('SE 331')
         const description = ref('Warm and cozy boots')
