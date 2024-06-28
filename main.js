@@ -1,4 +1,4 @@
-const { createApp, ref } = Vue
+const { createApp, ref, computed } = Vue
 
 createApp({
     setup() {
@@ -33,9 +33,12 @@ createApp({
         function toggleStock() {
             inStock.value = !inStock.value
         }
+
+        const title = computed(() => {
+            return brand.value + ' ' + product.value
+        })
         return {
-            product,
-            brand,
+            title,
             description,
             image,
             link,
