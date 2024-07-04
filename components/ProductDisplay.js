@@ -4,28 +4,29 @@ const productDisplay = {
     /*html*/
     `
     <div class="product-display">
-            <div class="product-container">
-                <div class="product-image">
-                    <img :src="image" :class="{OutOfStockImg: !inStock}">
-                </div>
+        <div class="product-container">
+            <div class="product-image">
+                <img :src="image" :class="{OutOfStockImg: !inStock}">
             </div>
         </div>
         <div class="product-info">
             <a :href="link" target="_blank"><h1>{{title}}</h1></a>
             <p>{{description}}</p>
-            <p v-if="inventory > 10">In Stock</p>
-            <p v-else-if="inventory <= 10 && inventory > 0">Almost out of Stock</p>
-            <p v-else>Out of Stock</p>
+            <p v-if="!inStock">Out of Stock</p>
+            <p v-else-if="inStock <= 10 && inStock>0">Almost out of Stock</p>
+            <p v-else>In Stock</p>
+
             <p v-if="onSale">{{title+" is on sale"}}</p>
-            <ul>
-                <li v-for="detail in details">{{detail}}</li>
-            </ul>
-            <span v-for="size in sizes">{{size+" "}}</span>
+            <p v-else>{{title+" is not on sale"}}</p>
+
+            <product-details :details="details"></product-details>
+
+            <span v-for="size in sizes">{{size+", "}}</span>
+
             <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle" :style="{backgroundColor: variant.color}">
                 {{variant.color}}
             </div>
-            <p v-if="inStock">In Stock</p>
-            <p v-else>Out of Stock</p>
+
             <p>Shipping: {{shipping}}</p>
             <button class="button" :disabled="!inStock" @click="addToCart" :class="{disabledButton: !inStock}">Add To Cart</button>
             <button class="button" @click="toggleStock">Toggle Stock</button>
@@ -33,7 +34,8 @@ const productDisplay = {
     </div>
     `,
     props:{
-        premium: Boolean
+        premium: Boolean,
+        details: Array
     },
     setup(props) {
         const shipping = computed(() => {
@@ -48,12 +50,6 @@ const productDisplay = {
         const brand = ref('SE 331')
         const description = ref('Warm and cozy boots')
         const link = ref('https://www.camt.cmu.ac.th/')
-        const inventory = ref(100)
-        const details = ref([
-            '50% cotton',
-            '30% wool',
-            '20% polyester'
-        ])
         const sizes = ref([
             'S', 'M', 'L'
         ])
@@ -97,9 +93,7 @@ const productDisplay = {
             image,
             link,
             inStock,
-            inventory,
             onSale,
-            details,
             sizes,
             variants,
             cart,
