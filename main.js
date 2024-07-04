@@ -9,10 +9,16 @@ const app = createApp({
             '30% wool',
             '20% polyester'
         ])
+
+        function updateCart() {
+            cart.value += 1
+        }
+
         return {
             cart,
             premium,
-            details
+            details,
+            updateCart
         }
     }
 })
