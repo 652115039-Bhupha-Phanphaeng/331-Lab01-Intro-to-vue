@@ -20,12 +20,23 @@ const app = createApp({
             cart.value.push({id: id, amount: 1})
             return;
         }
+        function removeFromCart(id) {
+            for (var i = 0; i < cart.value.length; i++) {
+                if (cart.value[i].id === id) {
+                    if (--cart.value[i].amount === 0) {
+                        cart.value.splice(i, 1);
+                    }
+                    return;
+                }
+            }
+        }
 
         return {
             cart,
             premium,
             details,
-            updateCart
+            updateCart,
+            removeFromCart
         }
     }
 })
