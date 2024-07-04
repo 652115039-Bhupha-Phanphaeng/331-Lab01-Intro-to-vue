@@ -10,8 +10,8 @@ const app = createApp({
             '20% polyester'
         ])
 
-        function updateCart() {
-            cart.value += 1
+        function updateCart(id) {
+            cart.value.push(id)
         }
 
         return {

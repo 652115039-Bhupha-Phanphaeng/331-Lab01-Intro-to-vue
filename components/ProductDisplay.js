@@ -58,7 +58,7 @@ const productDisplay = {
             { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0, onSale: false}
         ])
         const selectedVariant = ref(0)
-        const cart = ref(0)
+        const cart = ref([])
 
 
         function addToCart() {
