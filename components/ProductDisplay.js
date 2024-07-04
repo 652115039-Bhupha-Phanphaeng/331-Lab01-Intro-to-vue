@@ -12,8 +12,8 @@ const productDisplay = {
         <div class="product-info">
             <a :href="link" target="_blank"><h1>{{title}}</h1></a>
             <p>{{description}}</p>
-            <p v-if="!inStock">Out of Stock</p>
-            <p v-else-if="inStock <= 10 && inStock>0">Almost out of Stock</p>
+            <p v-if="!inStock" class="OutOfStock">Out of Stock</p>
+            <p v-else-if="inStock <= 10 && inStock>0" class="AlmostOutOfStock"><i>Almost out of Stock</i></p>
             <p v-else>In Stock</p>
 
             <p v-if="onSale">{{title+" is on sale"}}</p>
@@ -62,6 +62,10 @@ const productDisplay = {
         ])
         const selectedVariant = ref(0)
         const reviews = ref([])
+
+
+        var i = variants.value[selectedVariant.value].quantity;
+        const stock = [20,5,0]
         
 
         function addToCart() {
@@ -74,7 +78,8 @@ const productDisplay = {
             image.value = variantImage
         }
         function toggleStock() {
-            inStock.value = !inStock.value
+            i = ++i%stock.length;
+            variants.value[selectedVariant.value].quantity = stock[i];
         }
         function updateVariant(index) {
             selectedVariant.value = index;

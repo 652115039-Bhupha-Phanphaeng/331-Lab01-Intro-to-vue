@@ -40,6 +40,15 @@ body {
   border-radius: 50%;
 }
 
+.OutOfStock {
+  color: red;
+  font-weight: bold;
+}
+
+.AlmostOutOfStock {
+  color: red;
+}
+
 
 .disabledButton {
   background-color: #d8d8d8;
