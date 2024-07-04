@@ -32,7 +32,7 @@ const productDisplay = {
             <button class="button" :disabled="!inStock" @click="removeFromCart" :class="{disabledButton: !inStock}">Remove from cart</button>
             <button class="button" @click="toggleStock">Toggle Stock</button>
 
-            <review-form></review-form>
+            <review-form @review-submitted="addReview"></review-form>
         </div>
     </div>
     `,
@@ -61,6 +61,8 @@ const productDisplay = {
             { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0, onSale: false}
         ])
         const selectedVariant = ref(0)
+
+        const reviews = ref([])
         
 
         function addToCart() {
@@ -77,6 +79,9 @@ const productDisplay = {
         }
         function updateVariant(index) {
             selectedVariant.value = index;
+        }
+        function addReview(review) {
+            reviews.value.push(review)
         }
 
 
@@ -106,6 +111,8 @@ const productDisplay = {
             updateImage,
             toggleStock,
             updateVariant,
+            addReview,
+            reviews,
             shipping
         }
     }
