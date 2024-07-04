@@ -19,7 +19,7 @@ const reviewForm = {
                 <option>1</option>
             </select>
 
-            <input class="button" type="submit">
+            <input class="button" type="submit" value="submit">
         </form>
     `,
     setup() {
