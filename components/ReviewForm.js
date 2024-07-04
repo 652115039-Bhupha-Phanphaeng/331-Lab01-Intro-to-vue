@@ -57,7 +57,7 @@ const reviewForm = {
         }
 
         return {
-            form,
+            ...toRefs(form),
             onSubmit
         }
     }
