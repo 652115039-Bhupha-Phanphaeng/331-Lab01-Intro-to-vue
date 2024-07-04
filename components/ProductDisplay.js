@@ -31,9 +31,9 @@ const productDisplay = {
             <button class="button" :disabled="!inStock" @click="addToCart" :class="{disabledButton: !inStock}">Add to cart</button>
             <button class="button" :disabled="!inStock" @click="removeFromCart" :class="{disabledButton: !inStock}">Remove from cart</button>
             <button class="button" @click="toggleStock">Toggle Stock</button>
-
-            <review-form @review-submitted="addReview"></review-form>
         </div>
+        <review-list :reviews="reviews"></review-list>
+        <review-form @review-submitted="addReview"></review-form>
     </div>
     `,
     props:{
@@ -61,7 +61,6 @@ const productDisplay = {
             { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0, onSale: false}
         ])
         const selectedVariant = ref(0)
-
         const reviews = ref([])
         
 
@@ -81,7 +80,11 @@ const productDisplay = {
             selectedVariant.value = index;
         }
         function addReview(review) {
-            reviews.value.push(review)
+            reviews.value.push(review);
+            console.log('Reviews: '+reviews);
+            reviews.value.forEach(element => {
+                console.log(element);
+            });
         }
 
 
