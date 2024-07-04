@@ -37,7 +37,7 @@ const productDisplay = {
         premium: Boolean,
         details: Array
     },
-    setup(props) {
+    setup(props, {emit}) {
         const shipping = computed(() => {
             if (props.premium) {
                 return 'Free'
@@ -62,7 +62,7 @@ const productDisplay = {
 
 
         function addToCart() {
-            cart.value += 1
+            emit('add-to-cart')
         }
         function updateImage(variantImage) {
             image.value = variantImage
