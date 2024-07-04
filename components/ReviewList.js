@@ -10,6 +10,7 @@ const reviewList = {
                     <br/>
                     "{{review.review}}"
                     <br/>
+                    Recommended: {{review.recommend}}
                 </li>
             </ul>
         </div>
